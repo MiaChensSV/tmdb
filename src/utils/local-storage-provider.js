@@ -30,7 +30,7 @@ const LocalStorageProvider = (props) => {
     const localWatchList = JSON.parse(localStorage.getItem('localWatchList'));
     if (localWatchList) {
       dispatch(setWatchList(localWatchList));
-      dispatch(setIfWatchLoaded);
+      dispatch(setIfWatchLoaded(true));
     }
     const localViewedList = JSON.parse(localStorage.getItem('localViewedList'));
     if (localViewedList) {

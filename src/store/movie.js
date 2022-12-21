@@ -41,7 +41,9 @@ export const movieSlice = createSlice({
     },
     // add value
     addMovieToViewedList: (state, action) => {
-      state.value.viewedList.push(action.payload);
+      state.value.viewedList.unshift(action.payload);
+      const viewedList = state.value.viewedList
+      state.value.viewedList = viewedList.splice(0, 5);
     },
     addMovieToFavList:(state,action)=>{
       const movie = action.payload;
