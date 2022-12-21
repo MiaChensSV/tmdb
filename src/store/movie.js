@@ -4,13 +4,28 @@ export const movieSlice = createSlice({
   name: 'movie',
   initialState: {
     value: {
+      // data
       movieList: [],
       viewedList: [],
       watchList: [],
-      favList: []
+      favList: [],
+      // status
+      ifFavLoaded: false,
+      ifViewedLoaded: false,
+      ifWatchLoaded: false
     }
   },
   reducers: {
+    // set status
+    setIfFavLoaded: (state, action) => {
+      state.value.ifFavLoaded = action.payload
+    },
+    setIfWatchLoaded: (state, action) => {
+      state.value.ifWatchLoaded = action.payload
+    },
+    setIfViewedLoaded: (state, action) => {
+      state.value.ifViewedLoaded = action.payload
+    },
     // set list
     setMovieList: (state, action) => {
       state.value.movieList = action.payload;
@@ -43,6 +58,6 @@ export const movieSlice = createSlice({
 
 export const {
   setMovieList, setViewedList, setWatchList, setFavList, addMovieToViewedList, addMovieToFavList,
-  addMovieToWatchList
+  addMovieToWatchList, setIfFavLoaded, setIfWatchLoaded, setIfViewedLoaded
 } = movieSlice.actions;
 export default movieSlice.reducer;

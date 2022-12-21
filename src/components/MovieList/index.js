@@ -14,7 +14,6 @@ const MovieList = (props) => {
 
   // event listeners
   const addViewed = (movie) => {
-    console.log(movie);
     dispatch(addMovieToViewedList(movie));
   };
   const addFav = (movie) => {       
