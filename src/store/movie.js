@@ -29,7 +29,11 @@ export const movieSlice = createSlice({
       state.value.viewedList.push(action.payload);
     },
     addMovieToFavList:(state,action)=>{
-      state.value.favList.push(action.payload);
+      const movie = action.payload;
+      const favList = state.value.favList;
+      if (favList.filter((el) => el.id === movie.id).length === 0) {
+        state.value.favList.push(action.payload);
+      }
     },
     addMovieToWatchList: (state, action) => {
       state.value.watchList.push(action.payload);

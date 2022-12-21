@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./MovieList.css";
 import { useDispatch } from "react-redux";
-import { addMovieToFavList, addMovieToViewedList, addMovieToWatchList } from "../store/movie";
+import { addMovieToFavList, addMovieToViewedList, addMovieToWatchList } from "../../store/movie";
 
 const MovieList = (props) => {
 
@@ -33,8 +33,6 @@ const MovieList = (props) => {
       setIfRenderAddWatch(true);
       setIfRenderDeleteFav(true)
     } else if (listType === 'ViewedList') {
-      setIfRenderAddFav(true);
-      setIfRenderAddWatch(true);
     } else {
       setIfRenderAddFav(true);
       setIfRenderAddWatch(true);
