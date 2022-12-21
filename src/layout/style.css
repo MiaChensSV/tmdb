@@ -10,4 +10,5 @@
 
 .clean-list-btn{
   display: inline-block;
+  cursor: pointer;
 }
