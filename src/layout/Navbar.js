@@ -6,6 +6,8 @@ export default function Navbar() {
     <nav className="navbar ">
       <div className="nav-center d-flex justify-content-between">
         <Link to="/">TMDB Homepage</Link>
+        <Link to="/watchList">WatchList</Link>
+        
       </div>
     </nav>
   );

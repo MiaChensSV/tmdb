@@ -1,13 +1,13 @@
 import React from "react";
 import "./MovieList.css";
-
-export default function MovieList(props) {
+const MovieList = (props) => {
   const FavouriteComponent = props.favouriteComponent;
   const WatchComponent = props.WatchComponent;
+
   return (
     <div className="img-container ">
       {props.movies.map((movie, index) => (
-        <div className="row-container">
+        <div className="row-container" key={index} >
           <div onClick={() => props.handelViewedClick(movie)}>
             <img
               src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
@@ -49,3 +49,5 @@ export default function MovieList(props) {
     </div>
   );
 }
+
+export default MovieList;
