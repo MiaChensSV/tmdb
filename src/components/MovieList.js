@@ -1,16 +1,30 @@
 import React from "react";
 import "./MovieList.css";
+import { useDispatch } from "react-redux";
+import { addMovieToFavList, addMovieToViewedList, addMovieToWatchList } from "../store/movie";
+
 const MovieList = (props) => {
-  const FavouriteComponent = props.favouriteComponent;
-  const WatchComponent = props.WatchComponent;
+  // viariables
+  const dispatch = useDispatch();
+  // event listeners
+  const addViewed = (movie) => {
+    console.log(movie);
+    dispatch(addMovieToViewedList(movie));
+  };
+  const addFav = (movie) => {       
+    dispatch(addMovieToFavList(movie))
+  };
+  const addWatch = (movie) => {
+    dispatch(addMovieToWatchList(movie))
+  }
 
   return (
     <div className="img-container ">
       {props.movies.map((movie, index) => (
         <div className="row-container" key={index} >
-          <div onClick={() => props.handelViewedClick(movie)}>
+          <div onClick={() => addViewed(movie)}>
             <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+              src={ `https://image.tmdb.org/t/p/w200${movie.poster_path}` }
               alt="movie"
               key={index}
               className="img"
@@ -31,18 +45,15 @@ const MovieList = (props) => {
             </div>
           </div>
           <div
-            onClick={() => props.handelFavouriteClick(movie)}
+           
             className="favorite"
           >
             {" "}
-            <FavouriteComponent />
           </div>
-
           <div
             className="add-to-watchlist"
-            onClick={() => props.handelWatchClick(movie)}
+            
           >
-            <WatchComponent />
           </div>
         </div>
       ))}

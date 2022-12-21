@@ -1,27 +1,44 @@
 import { createSlice } from '@reduxjs/toolkit';
-import HTTP from 'axios';
 
 export const movieSlice = createSlice({
   name: 'movie',
   initialState: {
     value: {
       movieList: [],
-      watchedList: [],
+      viewedList: [],
+      watchList: [],
       favList: []
     }
   },
   reducers: {
+    // set list
     setMovieList: (state, action) => {
       state.value.movieList = action.payload;
     },
-    addMovieToWatched: (state, action) => {
-      state.value.watchedList.push(action.payload);
+    setViewedList: (state, action) => {
+      state.value.viewedList = action.payload;
     },
-    addMovieToFav:(state,action)=>{
+    setWatchList: (state, action) => {
+      state.value.watchList = action.payload
+    },
+    setFavList: (state, action) => {
+      state.value.favList = action.payload
+    },
+    // add value
+    addMovieToViewedList: (state, action) => {
+      state.value.viewedList.push(action.payload);
+    },
+    addMovieToFavList:(state,action)=>{
       state.value.favList.push(action.payload);
+    },
+    addMovieToWatchList: (state, action) => {
+      state.value.watchList.push(action.payload);
     }
   }
 });
 
-export const { setMovieList, addMovieToWatched,addMovieToFav } = movieSlice.actions;
+export const {
+  setMovieList, setViewedList, setWatchList, setFavList, addMovieToViewedList, addMovieToFavList,
+  addMovieToWatchList
+} = movieSlice.actions;
 export default movieSlice.reducer;
