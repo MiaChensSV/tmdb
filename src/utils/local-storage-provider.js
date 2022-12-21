@@ -32,7 +32,7 @@ const LocalStorageProvider = (props) => {
     if (localViewedList) {
       dispatch(setViewedList(localViewedList));
     }
-  }, []);
+  }, [dispatch]);
 
   // Save data to local storage
   useEffect(() => {

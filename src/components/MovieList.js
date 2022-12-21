@@ -39,7 +39,7 @@ const MovieList = (props) => {
       setIfRenderAddFav(true);
       setIfRenderAddWatch(true);
     }
-  }, []);
+  }, [listType]);
 
   return (
     <div className="img-container ">
