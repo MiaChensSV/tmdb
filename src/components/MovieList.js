@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MovieList.css";
 import { useDispatch } from "react-redux";
 import { addMovieToFavList, addMovieToViewedList, addMovieToWatchList } from "../store/movie";
 
 const MovieList = (props) => {
+
   // viariables
   const dispatch = useDispatch();
+  const listType = props.listType ? props.listType : 'OtherList';
+  const [ifRenderAddFav, setIfRenderAddFav] = useState(false);
+  const [ifRenderAddWatch, setIfRenderAddWatch] = useState(false);
+  const [ifRenderDeleteFav, setIfRenderDeleteFav] = useState(false);
+
   // event listeners
   const addViewed = (movie) => {
     console.log(movie);
@@ -16,7 +22,24 @@ const MovieList = (props) => {
   };
   const addWatch = (movie) => {
     dispatch(addMovieToWatchList(movie))
+  };
+  const deleteFav = (movie) => {
+
   }
+
+  // setup runder option
+  useEffect(() => {
+    if (listType === 'FavList'){
+      setIfRenderAddWatch(true);
+      setIfRenderDeleteFav(true)
+    } else if (listType === 'ViewedList') {
+      setIfRenderAddFav(true);
+      setIfRenderAddWatch(true);
+    } else {
+      setIfRenderAddFav(true);
+      setIfRenderAddWatch(true);
+    }
+  }, []);
 
   return (
     <div className="img-container ">
@@ -44,17 +67,27 @@ const MovieList = (props) => {
               <p>{movie.original_title}</p>
             </div>
           </div>
-          <div
-           
-            className="favorite"
-          >
-            {" "}
-          </div>
-          <div
-            className="add-to-watchlist"
-            
-          >
-          </div>
+          {
+            ifRenderAddFav ? (
+              <div className="add-fav" onClick={() => addFav(movie)}>
+                Add To Favorite
+              </div>
+            ) : null
+          }
+          {
+            ifRenderAddWatch ? (
+              <div className="add-watch" onClick={() => addWatch(movie)}>
+                Add To Watch List
+              </div>
+            ) : null
+          }
+          {
+            ifRenderDeleteFav ? (
+              <div className="delete-fav" onClick={() => deleteFav(movie)}>
+                Delete
+              </div>
+            ) : null
+          }
         </div>
       ))}
     </div>

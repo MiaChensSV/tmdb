@@ -19,7 +19,6 @@ const Home = () => {
   const viewedList = useSelector(state => state.movie.value.viewedList);
   const watchList = useSelector(state => state.movie.value.watchList);
   const dispatch = useDispatch();
-  console.log(movieList);
   // fetch data
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=cfb6b1ce8dc733868dda06c7f2458ca3&query=${searchmovie}`;
@@ -40,6 +39,7 @@ const Home = () => {
           </div>
           <div className="row">
             <MovieList
+              listType="MovieList"
               movies={movieList}
             />
           </div>
@@ -48,7 +48,7 @@ const Home = () => {
           </div>
           <div className="row">
             <MovieList
-              number="2"
+              listType="FavList"
               movies={favList}
             />
           </div>
@@ -56,7 +56,7 @@ const Home = () => {
             <MovieListHeading heading="Recently Viewed Movies: " />
           </div>
           <MovieList
-            number="3"
+            listType="ViewedList"
             movies={viewedList}
           />
         </div>
