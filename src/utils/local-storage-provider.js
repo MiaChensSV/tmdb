@@ -35,7 +35,7 @@ const LocalStorageProvider = (props) => {
     const localViewedList = JSON.parse(localStorage.getItem('localViewedList'));
     if (localViewedList) {
       dispatch(setViewedList(localViewedList));
-      dispatch(setIfViewedLoaded);
+      dispatch(setIfViewedLoaded(true));
     }
   }, [dispatch]);
 
