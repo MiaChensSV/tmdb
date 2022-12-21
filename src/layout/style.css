@@ -1,0 +1,13 @@
+.nav-center{
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.topbar-link{
+  margin-right: 20px;
+}
+
+.clean-list-btn{
+  display: inline-block;
+}
