@@ -12,11 +12,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar ">
+    <nav >
       <div className="nav-center">
         <Link className="topbar-link" to="/">TMDB Home</Link>
         <Link className="topbar-link" to="/watchList">WatchList</Link>
-        <div class="clean-list-btn" onClick={() => cleanList()} >Clear List</div>
+        <div className="clean-list-btn" onClick={() => cleanList()} >Clear List</div>
       </div>
     </nav>
   );

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from './pages/Home';
 import Error from './pages/Error';
-import WatchList from './pages/watchList'
+import WatchList from './pages/WatchList'
 
 const router = createBrowserRouter([
   {
