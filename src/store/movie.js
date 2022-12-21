@@ -9,6 +9,7 @@ export const movieSlice = createSlice({
       viewedList: [],
       watchList: [],
       favList: [],
+      selectedMovie: null,
       // status
       ifFavLoaded: false,
       ifViewedLoaded: false,
@@ -16,7 +17,7 @@ export const movieSlice = createSlice({
     }
   },
   reducers: {
-    // set status
+    // status
     setIfFavLoaded: (state, action) => {
       state.value.ifFavLoaded = action.payload
     },
@@ -26,9 +27,15 @@ export const movieSlice = createSlice({
     setIfViewedLoaded: (state, action) => {
       state.value.ifViewedLoaded = action.payload
     },
-    // set list
+    // set 
+    setSelectedMovie: (state, action) => {
+      state.value.selectedMovie = action.payload;
+    },
     setMovieList: (state, action) => {
       state.value.movieList = action.payload;
+      if(action.payload.length > 0){
+        state.value.currentMovie = action.payload[0];
+      }
     },
     setViewedList: (state, action) => {
       state.value.viewedList = action.payload;
@@ -39,7 +46,8 @@ export const movieSlice = createSlice({
     setFavList: (state, action) => {
       state.value.favList = action.payload
     },
-    // add value
+
+    // add 
     addMovieToViewedList: (state, action) => {
       const movie = action.payload;
       const viewedList = state.value.viewedList;
@@ -65,12 +73,20 @@ export const movieSlice = createSlice({
       if(watchList.filter(el => el.id === movie.id).length === 0){
         state.value.watchList.unshift(action.payload);
       }
-    }
+    },
+    // delete
+    deleteMovieFromWatchList: (state, action) => {
+      state.value.watchList = state.value.watchList.filter(el => el.id !== action.payload.id)
+    },
+    deleteMovieFromFavList: (state, action) => {
+      state.value.favList = state.value.favList.filter(el => el.id !== action.payload.id)
+    },
   }
 });
 
 export const {
   setMovieList, setViewedList, setWatchList, setFavList, addMovieToViewedList, addMovieToFavList,
-  addMovieToWatchList, setIfFavLoaded, setIfWatchLoaded, setIfViewedLoaded
+  addMovieToWatchList, setIfFavLoaded, setIfWatchLoaded, setIfViewedLoaded, setSelectedMovie,
+  deleteMovieFromFavList, deleteMovieFromWatchList
 } = movieSlice.actions;
 export default movieSlice.reducer;

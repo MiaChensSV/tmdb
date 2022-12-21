@@ -35,3 +35,6 @@
   text-align: center;
   color: rgb(34, 34, 223);
 }
+.div-btn{
+  cursor: pointer;
+}
