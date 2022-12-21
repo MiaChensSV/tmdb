@@ -45,9 +45,6 @@ const LocalStorageProvider = (props) => {
     if(ifFavLoaded && !arrayEqual(localFavList, favList)){
       localStorage.setItem('localFavList', JSON.stringify(favList));
     }
-    console.log('store', favList);
-    const alocalFavList = JSON.parse(localStorage.getItem('localFavList'));
-    console.log('local', alocalFavList);
   }, [favList, ifFavLoaded]);
   useEffect(() => {
     const localWatchList = JSON.parse(localStorage.getItem('localWatchList'));
