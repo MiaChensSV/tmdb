@@ -15,7 +15,7 @@ export default function Navbar() {
     <nav >
       <div className="nav-center">
         <Link className="topbar-link" to="/">TMDB Home</Link>
-        <Link className="topbar-link" to="/watchList">WatchList</Link>
+        <Link className="topbar-link" to="/watch-list">WatchList</Link>
         <div className="clean-list-btn" onClick={() => cleanList()} >Clear List</div>
       </div>
     </nav>
