@@ -11,6 +11,7 @@ const MovieList = (props) => {
   const [ifRenderAddFav, setIfRenderAddFav] = useState(false);
   const [ifRenderAddWatch, setIfRenderAddWatch] = useState(false);
   const [ifRenderDeleteFav, setIfRenderDeleteFav] = useState(false);
+  const [ifRenderDeleteWatch, setIfRenderDeleteWatch] = useState(false);
 
   // event listeners
   const addViewed = (movie) => {
@@ -24,7 +25,10 @@ const MovieList = (props) => {
   };
   const deleteFav = (movie) => {
 
-  }
+  };
+  const deleteWatch = (movie) => {
+
+  };
 
   // setup runder option
   useEffect(() => {
@@ -32,6 +36,9 @@ const MovieList = (props) => {
       setIfRenderAddWatch(true);
       setIfRenderDeleteFav(true)
     } else if (listType === 'ViewedList') {
+    } else if (listType === 'WatchList'){
+      setIfRenderAddFav(true);
+      setIfRenderDeleteWatch(true)
     } else {
       setIfRenderAddFav(true);
       setIfRenderAddWatch(true);
@@ -81,6 +88,13 @@ const MovieList = (props) => {
           {
             ifRenderDeleteFav ? (
               <div className="delete-fav" onClick={() => deleteFav(movie)}>
+                Delete
+              </div>
+            ) : null
+          }
+          {
+            ifRenderDeleteWatch ? (
+              <div className="delete-fav" onClick={() => deleteWatch(movie)}>
                 Delete
               </div>
             ) : null

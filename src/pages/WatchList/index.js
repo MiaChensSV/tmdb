@@ -15,7 +15,7 @@ export default function WatchList() {
       <Link to='/' className='btn btn-primary'>
         Back home
       </Link>
-      <MovieList movies={watchList} />
+      <MovieList movies={watchList} listType="WatchList"/>
     </>
   )
 }
