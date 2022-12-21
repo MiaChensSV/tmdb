@@ -1,13 +1,30 @@
-import React from "react";
+import HTTP from "axios";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setMovieList } from "../store/movie";
 
 export default function Search(props) {
-  function handelSubmit(e) {
-    e.preventDefalut();
+
+  // variables
+  const [keyword, setKeyword] = useState('a');
+  const dispatch = useDispatch();
+
+  // event handelers
+  const updateKeyword = (input) => {
+    setKeyword(input);
   }
+
+  const getMovieList = () => {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=cfb6b1ce8dc733868dda06c7f2458ca3&query=${keyword}`;
+    HTTP.get(url).then((res) => {
+      dispatch(setMovieList(res.data.results));
+    });
+  };
+
   return (
-    <form onSubmit={handelSubmit}>
-      <input placeholder="type to search" value={props.value} onChange={(event)=>props.setSerchmovie(event.target.value)}></input>
-      <button>search</button>
+    <form>
+      <input placeholder="type to search" value={keyword} onChange={ event => updateKeyword(event.target.value)} />
+      <button onClick={() => getMovieList()}>search</button>
     </form>
   );
 }

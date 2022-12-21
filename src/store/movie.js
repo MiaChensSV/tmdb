@@ -41,19 +41,30 @@ export const movieSlice = createSlice({
     },
     // add value
     addMovieToViewedList: (state, action) => {
-      state.value.viewedList.unshift(action.payload);
-      const viewedList = state.value.viewedList
+      const movie = action.payload;
+      const viewedList = state.value.viewedList;
+      if(viewedList.filter(el => el.id === movie.id).length === 0){
+        state.value.viewedList.unshift(movie);
+      } else {
+        const index = viewedList.findIndex(el => el.id === movie.id);
+        state.value.viewedList.splice(index, 1);
+        state.value.viewedList.unshift(movie);
+      }
       state.value.viewedList = viewedList.splice(0, 5);
     },
     addMovieToFavList:(state,action)=>{
       const movie = action.payload;
       const favList = state.value.favList;
       if (favList.filter((el) => el.id === movie.id).length === 0) {
-        state.value.favList.push(action.payload);
+        state.value.favList.unshift(action.payload);
       }
     },
     addMovieToWatchList: (state, action) => {
-      state.value.watchList.push(action.payload);
+      const movie = action.payload;
+      const watchList = state.value.watchList;
+      if(watchList.filter(el => el.id === movie.id).length === 0){
+        state.value.watchList.unshift(action.payload);
+      }
     }
   }
 });
