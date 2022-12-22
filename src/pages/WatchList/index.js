@@ -10,12 +10,13 @@ export default function WatchList() {
 
   return (
     <>
-      <Layout />
-      <div>WatchList</div>
-      <Link to='/' className='btn btn-primary'>
-        Back home
-      </Link>
-      <MovieList movies={watchList} listType="WatchList"/>
+      <Layout>
+        <div>WatchList</div>
+        <Link to='/' className='btn btn-primary'>
+          Back home
+        </Link>
+        <MovieList movies={watchList} listType="WatchList" />
+      </Layout>
     </>
   )
 }

@@ -26,6 +26,7 @@ const Home = () => {
           </div>
           <div className="row">
             <MovieList
+              key={1}
               listType="MovieList"
               movies={movieList}
             />
@@ -35,6 +36,7 @@ const Home = () => {
           </div>
           <div className="row">
             <MovieList
+              key={2}
               listType="FavList"
               movies={favList}
             />
@@ -43,6 +45,7 @@ const Home = () => {
             <MovieListHeading heading="Recently Viewed Movies: " />
           </div>
           <MovieList
+            key={3}
             listType="ViewedList"
             movies={viewedList}
           />
