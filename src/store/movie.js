@@ -81,12 +81,21 @@ export const movieSlice = createSlice({
     deleteMovieFromFavList: (state, action) => {
       state.value.favList = state.value.favList.filter(el => el.id !== action.payload.id)
     },
+    emptyViewedList: (state) => {
+      state.value.viewedList = [];
+    },
+    emptyWatchList: (state) => {
+      state.value.watchList = [];
+    },
+    emptyFavList: (state) => {
+      state.value.favList = [];
+    }
   }
 });
 
 export const {
   setMovieList, setViewedList, setWatchList, setFavList, addMovieToViewedList, addMovieToFavList,
   addMovieToWatchList, setIfFavLoaded, setIfWatchLoaded, setIfViewedLoaded, setSelectedMovie,
-  deleteMovieFromFavList, deleteMovieFromWatchList
+  deleteMovieFromFavList, deleteMovieFromWatchList, emptyFavList, emptyWatchList, emptyViewedList
 } = movieSlice.actions;
 export default movieSlice.reducer;

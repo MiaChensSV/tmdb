@@ -1,13 +1,22 @@
+.root{
+  display: flex;
+  flex-direction: column;
+}
 .img-container {
   display: flex;
   flex-direction: row;
-  height: 500px;
+  height: 550px;
+  width: 100%;
+  overflow-x: scroll;
+  text-align: center;
 }
 .row-container {
   width: 200px;
   margin: 2vw;
 }
-
+.movie-title{
+  height: 50px;
+}
 .add-watch {
   margin: 5px;
   border-radius: 12px;
@@ -35,6 +44,24 @@
   text-align: center;
   color: rgb(34, 34, 223);
 }
+.div-btn-container{
+  width: 100%;
+  height: 20px;
+  overflow: visible;
+}
 .div-btn{
   cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80%;
+}
+.empty-btn{
+  color: pink;
+  
+  width: 100px ;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+  z-index: 10;
 }
